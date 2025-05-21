@@ -162,137 +162,102 @@
             grid-column: 1 / span 8;
             grid-row: 1 / span 5;
         }
-
         .card-flow {
             grid-column: 9 / span 5;
             grid-row: 1 / span 4;
         }
-
         .card-imagen4 {
             grid-column: 14 / span 4;
             grid-row: 1 / span 2;
         }
-
         .card-ai-ultra {
             grid-column: 18 / span 3;
             grid-row: 1 / span 2;
         }
-
         .card-beam {
             grid-column: 21 / span 7;
             grid-row: 1 / span 2;
         }
-
         .card-gemini-chrome {
             grid-column: 28 / span 6;
             grid-row: 1 / span 2;
         }
-
         .card-agent-mode {
             grid-column: 14 / span 3;
             grid-row: 4 / span 2;
         }
-
         .card-astra {
             grid-column: 17 / span 6;
             grid-row: 4 / span 2;
         }
-
         .card-lyria {
             grid-column: 23 / span 4;
             grid-row: 4 / span 4;
         }
-
         .card-gemma {
             grid-column: 27 / span 7;
             grid-row: 4 / span 2;
         }
-
         .card-jules {
             grid-column: 1 / span 9;
             grid-row: 6 / span 2;
         }
-
         .card-gemini-flash {
             grid-column: 10 / span 4;
             grid-row: 5 / span 4;
         }
-
         .card-med-gemma {
             grid-column: 14 / span 4;
             grid-row: 6 / span 4;
         }
-
         .card-gemini-diffusion {
             grid-column: 18 / span 5;
             grid-row: 6 / span 4;
         }
-
-        /* 新增卡片 */
         .card-deep-think {
             grid-column: 27 / span 7;
             grid-row: 6 / span 2;
         }
-
         .card-virtual-tryon {
             grid-column: 1 / span 3;
             grid-row: 8 / span 4;
         }
-
         .card-synthid {
             grid-column: 4 / span 6;
             grid-row: 8 / span 2;
         }
-
-
-
         .card-android-xr {
             grid-column: 10 / span 4;
             grid-row: 9 / span 2;
         }
-
         .card-workspace {
             grid-column:4 / span 6;
             grid-row: 10 / span 2;
         }
-
-        /* 新增卡片：Building with AI */
         .card-building-with-ai {
             grid-column: 10 / span 4;
             grid-row: 11 / span 3;
         }
-
         .card-ai-overviews {
             grid-column: 14 / span 6;
             grid-row: 10 / span 2;
         }
-
         .card-gemini-personal {
             grid-column: 14 / span 6;
             grid-row: 12 / span 2;
         }
-
-
-        /* 新增卡片：Shop with AI Mode */
         .card-shop-ai-mode {
             grid-column: 1 / span 5;
             grid-row: 12 / span 2;
         }
-
-        /* 新增卡片：Universal AI Assistant */
         .card-universal-ai {
             grid-column: 6 / span 4;
             grid-row: 12 / span 2;
         }
-
-
         .card-android-xr-gemini {
             grid-column: 23 / span 6;
             grid-row: 8 / span 4;
         }
-
-
-        
         .card-agents-adk {
             grid-column: 20 / span 3;
             grid-row: 10 / span 2;
@@ -307,7 +272,6 @@
             grid-column: 20 / span 4;
             grid-row: 12 / span 2;
         }
-
         .card-vertex-ai-media {
             grid-column: 29 / span 4;
             grid-row: 8 / span 2;
@@ -417,9 +381,6 @@
                 grid-column: 1 / span 5;
                 grid-row: 6 / span 2;
             }
-
-
-
             .card-beam {
                 grid-column: 1 / span 4;
                 grid-row: 8 / span 2;
@@ -533,6 +494,22 @@
                 grid-column: 1 / span 6;
                 grid-row: 36 / span 2;
             }
+            .card-shop-ai-mode {
+                grid-column: 1 / span 6;
+                grid-row: 24 / span 2;
+            }
+            .card-universal-ai {
+                grid-column: 1 / span 6;
+                grid-row: 26 / span 2;
+            }
+            .card-gemini-personal {
+                grid-column: 7 / span 6;
+                grid-row: 26 / span 2;
+            }
+            .card-building-with-ai {
+                grid-column: 7 / span 6;
+                grid-row: 28 / span 2;
+            }
         }
 
         @media (max-width: 640px) {
@@ -553,199 +530,168 @@
             }
         }
 
-        /* 每个卡片展开时的样式，需要具体定义 */
-        .card-veo3.expanded {
-            grid-column: 1 / span 20 !important;
-            grid-row: 1 / span 8 !important;
-        }
+       /* 每个卡片展开时的样式，需要具体定义 */
+/* 左侧卡片 - 向右展开 */
+.card-veo3.expanded {
+    grid-column: 1 / span 16 !important;
+    grid-row: 1 / span 8 !important;
+}
 
-        .card-imagen4.expanded {
-            grid-column: 13 / span 18 !important;
-            grid-row: 1 / span 7 !important;
-        }
+.card-flow.expanded {
+    grid-column: 9 / span 14 !important;
+    grid-row: 1 / span 7 !important;
+}
 
-        .card-flow.expanded {
-            grid-column: 24 / span 9 !important;
-            grid-row: 1 / span 5 !important;
-        }
+.card-jules.expanded {
+    grid-column: 1 / span 14 !important;
+    grid-row: 6 / span 6 !important;
+}
 
-        .card-ai-ultra.expanded {
-            grid-column: 24 / span 9 !important;
-            grid-row: 1 / span 5 !important;
-        }
+.card-gemini-flash.expanded {
+    grid-column: 10 / span 12 !important;
+    grid-row: 5 / span 7 !important;
+}
 
-        .card-beam.expanded {
-            grid-column: 8 / span 12 !important;
-            grid-row: 6 / span 5 !important;
-        }
+.card-virtual-tryon.expanded {
+    grid-column: 1 / span 10 !important;
+    grid-row: 8 / span 7 !important;
+}
 
-        .card-gemini-chrome.expanded {
-            grid-column: 15 / span 12 !important;
-            grid-row: 4 / span 5 !important;
-        }
+.card-synthid.expanded {
+    grid-column: 4 / span 12 !important;
+    grid-row: 8 / span 6 !important;
+}
 
-        .card-agent-mode.expanded {
-            grid-column: 21 / span 12 !important;
-            grid-row: 4 / span 5 !important;
-        }
+.card-android-xr.expanded {
+    grid-column: 10 / span 12 !important;
+    grid-row: 9 / span 6 !important;
+}
 
-        .card-astra.expanded {
-            grid-column: 21 / span 12 !important;
-            grid-row: 3 / span 6 !important;
-        }
+.card-workspace.expanded {
+    grid-column: 4 / span 12 !important;
+    grid-row: 10 / span 6 !important;
+}
 
-        .card-lyria.expanded {
-            grid-column: 24 / span 9 !important;
-            grid-row: 6 / span 5 !important;
-        }
+.card-building-with-ai.expanded {
+    grid-column: 10 / span 12 !important;
+    grid-row: 11 / span 6 !important;
+}
 
-        .card-gemma.expanded {
-            grid-column: 21 / span 12 !important;
-            grid-row: 6 / span 6 !important;
-        }
+.card-shop-ai-mode.expanded {
+    grid-column: 1 / span 12 !important;
+    grid-row: 12 / span 6 !important;
+}
 
-        .card-jules.expanded {
-            grid-column: 15 / span 14 !important;
-            grid-row: 6 / span 5 !important;
-        }
+.card-universal-ai.expanded {
+    grid-column: 6 / span 12 !important;
+    grid-row: 12 / span 6 !important;
+}
 
-        .card-gemini-flash.expanded {
-            grid-column: 1 / span 14 !important;
-            grid-row: 9 / span 6 !important;
-        }
+/* 右侧卡片 - 向左展开 */
+.card-imagen4.expanded {
+    grid-column: span 12 / 18 !important; /* 从18向左扩展12列 */
+    grid-row: 1 / span 6 !important;
+}
 
-        .card-med-gemma.expanded {
-            grid-column: 9 / span 14 !important;
-            grid-row: 8 / span 6 !important;
-        }
+.card-ai-ultra.expanded {
+    grid-column: span 12 / 21 !important; /* 从21向左扩展12列 */
+    grid-row: 1 / span 6 !important;
+}
 
-        .card-gemini-diffusion.expanded {
-            grid-column: 16 / span 16 !important;
-            grid-row: 8 / span 6 !important;
-        }
+.card-beam.expanded {
+    grid-column: span 12 / 28 !important; /* 从28向左扩展12列 */
+    grid-row: 1 / span 6 !important;
+}
 
-        .card-deep-think.expanded {
-            grid-column: 20 / span 13 !important;
-            grid-row: 9 / span 5 !important;
-        }
+.card-gemini-chrome.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 1 / span 6 !important;
+}
 
-        .card-virtual-tryon.expanded {
-            grid-column: 5 / span 16 !important;
-            grid-row: 12 / span 6 !important;
-        }
+.card-agent-mode.expanded {
+    grid-column: span 10 / 17 !important; /* 从17向左扩展10列 */
+    grid-row: 4 / span 6 !important;
+}
 
-        .card-synthid.expanded {
-            grid-column: 1 / span 9 !important;
-            grid-row: 12 / span 6 !important;
-        }
+.card-astra.expanded {
+    grid-column: span 12 / 23 !important; /* 从23向左扩展12列 */
+    grid-row: 4 / span 6 !important;
+}
 
-        .card-workspace.expanded {
-            grid-column: 16 / span 14 !important;
-            grid-row: 11 / span 5 !important;
-        }
+.card-lyria.expanded {
+    grid-column: span 10 / 27 !important; /* 从27向左扩展10列 */
+    grid-row: 4 / span 7 !important;
+}
 
-        .card-android-xr.expanded {
-            grid-column: 20 / span 10 !important;
-            grid-row: 11 / span 5 !important;
-        }
+.card-gemma.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 4 / span 6 !important;
+}
 
-        .card-primordial-soup.expanded {
-            grid-column: 22 / span 11 !important;
-            grid-row: 11 / span 5 !important;
-        }
-        .card-android-xr-gemini.expanded {
-            grid-column: 10 / span 14 !important;
-            grid-row: 15 / span 6 !important;
-        }
-        .card-universal-ai.expanded {
-            grid-column: 10 / span 14 !important;
-            grid-row: 13 / span 6 !important;
-        }
-        .card-agents-adk.expanded {
-            grid-column: 20 / span 13 !important;
-            grid-row: 17 / span 6 !important;
-        }
-        .card-gemini-vertex.expanded {
-            grid-column: 19 / span 14 !important;
-            grid-row: 17 / span 6 !important;
-        }
-        .card-vertex-ai-media.expanded {
-            grid-column: 17 / span 14 !important;
-            grid-row: 15 / span 6 !important;
-        }
-        .card-gemini-security.expanded {
-            grid-column: 22 / span 11 !important;
-            grid-row: 13 / span 6 !important;
-        }
-        .card-firebase-io.expanded {
-            grid-column: 1 / span 14 !important;
-            grid-row: 17 / span 6 !important;
-        }
+.card-med-gemma.expanded {
+    grid-column: span 12 / 18 !important; /* 从18向左扩展12列 */
+    grid-row: 6 / span 7 !important;
+}
 
+.card-gemini-diffusion.expanded {
+    grid-column: span 14 / 23 !important; /* 从23向左扩展14列 */
+    grid-row: 6 / span 7 !important;
+}
+
+.card-deep-think.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 6 / span 6 !important;
+}
+
+.card-ai-overviews.expanded {
+    grid-column: span 12 / 20 !important; /* 从20向左扩展12列 */
+    grid-row: 10 / span 6 !important;
+}
+
+.card-gemini-personal.expanded {
+    grid-column: span 12 / 20 !important; /* 从20向左扩展12列 */
+    grid-row: 12 / span 6 !important;
+}
+
+.card-android-xr-gemini.expanded {
+    grid-column: span 12 / 29 !important; /* 从29向左扩展12列 */
+    grid-row: 8 / span 7 !important;
+}
+
+.card-agents-adk.expanded {
+    grid-column: span 10 / 23 !important; /* 从23向左扩展10列 */
+    grid-row: 10 / span 6 !important;
+}
+
+.card-gemini-vertex.expanded {
+    grid-column: span 12 / 29 !important; /* 从29向左扩展12列 */
+    grid-row: 12 / span 6 !important;
+}
+
+.card-primordial-soup.expanded {
+    grid-column: span 12 / 24 !important; /* 从24向左扩展12列 */
+    grid-row: 12 / span 6 !important;
+}
+
+.card-vertex-ai-media.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 8 / span 6 !important;
+}
+
+.card-gemini-security.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 10 / span 6 !important;
+}
+
+.card-firebase-io.expanded {
+    grid-column: span 12 / 33 !important; /* 从33向左扩展12列 */
+    grid-row: 12 / span 6 !important;
+}
 
         
 
-        /* 在媒体查询中添加响应式布局 */
-        @media (max-width: 960px) {
-            .card-shop-ai-mode {
-                grid-column: 1 / span 6;
-                grid-row: 24 / span 2;
-            }
-        }
-
-        /* 添加展开时的样式 */
-        .card-shop-ai-mode.expanded {
-            grid-column: 1 / span 14 !important;
-            grid-row: 13 / span 6 !important;
-        }
 
 
-
-        /* 在媒体查询中添加响应式布局 */
-        @media (max-width: 960px) {
-            .card-universal-ai {
-                grid-column: 1 / span 6;
-                grid-row: 26 / span 2;
-            }
-        }
-
-        /* 添加展开时的样式 */
-        .card-universal-ai.expanded {
-            grid-column: 10 / span 14 !important;
-            grid-row: 13 / span 6 !important;
-        }
-
-
-
-        /* 在媒体查询中添加响应式布局 */
-        @media (max-width: 960px) {
-            .card-gemini-personal {
-                grid-column: 7 / span 6;
-                grid-row: 26 / span 2;
-            }
-        }
-
-        /* 添加展开时的样式 */
-        .card-gemini-personal.expanded {
-            grid-column: 19 / span 14 !important;
-            grid-row: 13 / span 6 !important;
-        }
-
-
-
-        /* 在媒体查询中添加响应式布局 */
-        @media (max-width: 960px) {
-            .card-building-with-ai {
-                grid-column: 7 / span 6;
-                grid-row: 28 / span 2;
-            }
-        }
-
-        /* 添加展开时的样式 */
-        .card-building-with-ai.expanded {
-            grid-column: 20 / span 13 !important;
-            grid-row: 15 / span 6 !important;
-        }
     </style>
 </head>
 
