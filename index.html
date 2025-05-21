@@ -33,14 +33,36 @@
         }
 
         header {
-            text-align: center;
-            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 0;
         }
 
         h1 {
             font-size: 42px;
-            margin-bottom: 10px;
+            margin-bottom: 0;
             font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: right;
+            font-weight: bold;
+            line-height: 10px;
+        }
+        .header-right p {
+            margin: 0;
+            line-height: 10px;
+
+        }
+        .header-right a {
+            color: #5f6368;
+            text-decoration: none;
+            line-height: 10px;
+
         }
 
         .subtitle {
@@ -182,7 +204,7 @@
         }
 
         .card-gemma {
-            grid-column: 27 / span 6;
+            grid-column: 27 / span 7;
             grid-row: 4 / span 2;
         }
 
@@ -304,10 +326,14 @@
 
         .grid-footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 4px 0;
             color: #5f6368;
             grid-column: 1 / span 32;
             grid-row: 15 / span 1;
+        }
+        .grid-footer a {
+            color: #5f6368;
+            text-decoration: none;
         }
 
         /* 展开卡片的样式 */
@@ -726,9 +752,10 @@
 <body>
     <div class="container">
         <header>
-            <h1>Google I/O 2025</h1>
-            <p>Made by: Karminski-牙医</p>
-            <span>Official Site: </span><a href="https://blog.google/technology/developers/google-io-2025-collection/">https://blog.google/technology/developers/google-io-2025-collection/</a>
+            <h1>Google I/O 2025 Big Map</h1>
+            <div class="header-right">
+                <p>Made by: Karminski-牙医 / Link: </p><a href="https://google-io-2025.kcores.com">https://google-io-2025.kcores.com</a>
+            </div>
         </header>
 
         <div class="mosaic-layout">
@@ -1612,7 +1639,7 @@
             </div>
 
             <div class="grid-footer">
-                <p>Google I/O 2025 - 将研究转化为现实</p>
+                <a href="https://io.google/2025/">Google I/O 2025 - 将研究转化为现实</a>
             </div>
         </div>
     </div>
