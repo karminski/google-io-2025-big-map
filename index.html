@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google I/O 2025 产品展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #202124;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #5f6368;
+            margin-bottom: 10px;
+        }
+
+        .mosaic-layout {
+            display: grid;
+            grid-template-columns: repeat(32, 1fr);
+            grid-template-rows: repeat(auto-fill, minmax(60px, auto));
+            gap: 15px;
+            flex: 1;
+            padding: 10px 0;
+            height: auto;
+            grid-auto-flow: dense;
+        }
+
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 180px;
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+        }
+
+        .card:hover::before {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 视频背景 */
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* 卡片位置定义 - 32列网格系统 */
+        .card-veo3 {
+            grid-column: 1 / span 12;
+            grid-row: 1 / span 5;
+        }
+
+        .card-imagen4 {
+            grid-column: 13 / span 11;
+            grid-row: 1 / span 3;
+        }
+
+        .card-flow {
+            grid-column: 24 / span 5;
+            grid-row: 1 / span 2;
+        }
+
+        .card-ai-ultra {
+            grid-column: 29 / span 4;
+            grid-row: 1 / span 2;
+        }
+
+        .card-gemini25 {
+            grid-column: 1 / span 7;
+            grid-row: 6 / span 3;
+        }
+
+        .card-beam {
+            grid-column: 8 / span 7;
+            grid-row: 6 / span 2;
+        }
+
+        .card-gemini-chrome {
+            grid-column: 15 / span 6;
+            grid-row: 4 / span 2;
+        }
+
+        .card-agent-mode {
+            grid-column: 21 / span 6;
+            grid-row: 4 / span 2;
+        }
+
+        .card-astra {
+            grid-column: 27 / span 6;
+            grid-row: 3 / span 3;
+        }
+
+        .card-lyria {
+            grid-column: 24 / span 4;
+            grid-row: 6 / span 2;
+        }
+
+        .card-gemma {
+            grid-column: 28 / span 5;
+            grid-row: 6 / span 3;
+        }
+
+        .card-jules {
+            grid-column: 15 / span 9;
+            grid-row: 6 / span 2;
+        }
+
+        .card-gemini-flash {
+            grid-column: 1 / span 5;
+            grid-row: 9 / span 6;
+        }
+
+        .card-med-gemma {
+            grid-column: 10 / span 6;
+            grid-row: 8 / span 3;
+        }
+
+        .card-gemini-diffusion {
+            grid-column: 16 / span 10;
+            grid-row: 8 / span 3;
+        }
+
+        /* 新增卡片 */
+        .card-deep-think {
+            grid-column: 26 / span 7;
+            grid-row: 9 / span 2;
+        }
+
+        .card-virtual-tryon {
+            grid-column: 6 / span 10;
+            grid-row: 12 / span 3;
+        }
+
+        .card-synthid {
+            grid-column: 6 / span 4;
+            grid-row: 9 / span 3;
+        }
+
+        .card-workspace {
+            grid-column: 16 / span 8;
+            grid-row: 11 / span 2;
+        }
+
+        .card-android-xr {
+            grid-column: 24 / span 4;
+            grid-row: 11 / span 2;
+        }
+
+        .card-primordial-soup {
+            grid-column: 28 / span 5;
+            grid-row: 11 / span 2;
+        }
+
+        .card-android-xr-gemini {
+            grid-column: 10 / span 9;
+            grid-row: 15 / span 2;
+        }
+        .card-ai-overviews {
+            grid-column: 19 / span 9;
+            grid-row: 11 / span 2;
+        }
+        .card-agents-adk {
+            grid-column: 28 / span 5;
+            grid-row: 17 / span 2;
+        }
+        .card-gemini-vertex {
+            grid-column: 19 / span 8;
+            grid-row: 17 / span 2;
+        }
+        .card-vertex-ai-media {
+            grid-column: 17 / span 10;
+            grid-row: 15 / span 2;
+        }
+        .card-gemini-security {
+            grid-column: 28 / span 5;
+            grid-row: 13 / span 2;
+        }
+        .card-firebase-io {
+            grid-column: 1 / span 9;
+            grid-row: 17 / span 2;
+        }
+
+
+        
+
+        .grid-footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #5f6368;
+            grid-column: 1 / span 32;
+            grid-row: 15 / span 1;
+        }
+
+        /* 展开卡片的样式 */
+        .card.expanded {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            z-index: 100;
+        }
+
+        .card.collapsed {
+            opacity: 0.6;
+            transform: scale(0.95);
+        }
+
+        .card.collapsed p:not(.card-title) {
+            display: none;
+        }
+
+        .card-title {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* 详细内容区域 */
+        .card-details {
+            display: none;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .card.expanded .card-details {
+            display: block;
+            opacity: 1;
+            max-height: 1000px;
+            overflow: auto;
+        }
+
+        .card-detail-section {
+            margin-bottom: 15px;
+        }
+
+        .card-detail-section h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .card-detail-section p, .card-detail-section span {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 960px) {
+            .mosaic-layout {
+                grid-template-columns: repeat(12, 1fr);
+            }
+
+            .card-veo3 {
+                grid-column: 1 / span 12;
+                grid-row: 1 / span 3;
+            }
+
+            .card-imagen4 {
+                grid-column: 1 / span 6;
+                grid-row: 4 / span 2;
+            }
+
+            .card-flow {
+                grid-column: 7 / span 6;
+                grid-row: 4 / span 2;
+            }
+
+            .card-ai-ultra {
+                grid-column: 1 / span 5;
+                grid-row: 6 / span 2;
+            }
+
+            .card-gemini25 {
+                grid-column: 6 / span 7;
+                grid-row: 6 / span 2;
+            }
+
+            .card-beam {
+                grid-column: 1 / span 4;
+                grid-row: 8 / span 2;
+            }
+
+            .card-gemini-chrome {
+                grid-column: 5 / span 4;
+                grid-row: 8 / span 2;
+            }
+
+            .card-agent-mode {
+                grid-column: 9 / span 4;
+                grid-row: 8 / span 2;
+            }
+
+            .card-astra {
+                grid-column: 1 / span 3;
+                grid-row: 10 / span 2;
+            }
+
+            .card-lyria {
+                grid-column: 4 / span 3;
+                grid-row: 10 / span 2;
+            }
+
+            .card-gemma {
+                grid-column: 1 / span 3;
+                grid-row: 12 / span 2;
+            }
+
+            .card-jules {
+                grid-column: 4 / span 3;
+                grid-row: 12 / span 2;
+            }
+
+            .card-gemini-flash {
+                grid-column: 1 / span 3;
+                grid-row: 14 / span 2;
+            }
+
+            .card-med-gemma {
+                grid-column: 4 / span 3;
+                grid-row: 14 / span 2;
+            }
+
+            .card-gemini-diffusion {
+                grid-column: 1 / span 6;
+                grid-row: 16 / span 2;
+            }
+
+            /* 新增卡片响应式 */
+            .card-deep-think {
+                grid-column: 1 / span 3;
+                grid-row: 18 / span 2;
+            }
+
+            .card-virtual-tryon {
+                grid-column: 4 / span 3;
+                grid-row: 18 / span 2;
+            }
+
+            .card-synthid {
+                grid-column: 1 / span 3;
+                grid-row: 20 / span 2;
+            }
+
+            .card-workspace {
+                grid-column: 4 / span 3;
+                grid-row: 20 / span 2;
+            }
+
+            .card-android-xr {
+                grid-column: 1 / span 3;
+                grid-row: 22 / span 2;
+            }
+
+            .card-primordial-soup {
+                grid-column: 4 / span 3;
+                grid-row: 22 / span 2;
+            }
+            .card-agents-adk {
+                grid-column: 7 / span 6;
+                grid-row: 30 / span 2;
+            }
+
+            .grid-footer {
+                grid-column: 1 / span 6;
+                grid-row: 24 / span 1;
+            }
+            .card-android-xr-gemini {
+                grid-column: 1 / span 6;
+                grid-row: 30 / span 2;
+            }
+            .card-ai-overviews {
+                grid-column: 1 / span 6;
+                grid-row: 25 / span 2;
+            }
+            .card-gemini-vertex {
+                grid-column: 1 / span 6;
+                grid-row: 32 / span 2;
+            }
+            .card-vertex-ai-media {
+                grid-column: 1 / span 6;
+                grid-row: 34 / span 2;
+            }
+            .card-gemini-security {
+                grid-column: 1 / span 6;
+                grid-row: 28 / span 2;
+            }
+            .card-firebase-io {
+                grid-column: 1 / span 6;
+                grid-row: 36 / span 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mosaic-layout {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .card {
+                grid-column: 1 !important;
+                grid-row: auto !important;
+                min-height: 160px;
+            }
+
+            .grid-footer {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+
+        /* 每个卡片展开时的样式，需要具体定义 */
+        .card-veo3.expanded {
+            grid-column: 1 / span 20 !important;
+            grid-row: 1 / span 8 !important;
+        }
+
+        .card-imagen4.expanded {
+            grid-column: 13 / span 18 !important;
+            grid-row: 1 / span 7 !important;
+        }
+
+        .card-flow.expanded {
+            grid-column: 24 / span 9 !important;
+            grid-row: 1 / span 5 !important;
+        }
+
+        .card-ai-ultra.expanded {
+            grid-column: 24 / span 9 !important;
+            grid-row: 1 / span 5 !important;
+        }
+
+        .card-gemini25.expanded {
+            grid-column: 1 / span 12 !important;
+            grid-row: 6 / span 6 !important;
+        }
+
+        .card-beam.expanded {
+            grid-column: 8 / span 12 !important;
+            grid-row: 6 / span 5 !important;
+        }
+
+        .card-gemini-chrome.expanded {
+            grid-column: 15 / span 12 !important;
+            grid-row: 4 / span 5 !important;
+        }
+
+        .card-agent-mode.expanded {
+            grid-column: 21 / span 12 !important;
+            grid-row: 4 / span 5 !important;
+        }
+
+        .card-astra.expanded {
+            grid-column: 21 / span 12 !important;
+            grid-row: 3 / span 6 !important;
+        }
+
+        .card-lyria.expanded {
+            grid-column: 24 / span 9 !important;
+            grid-row: 6 / span 5 !important;
+        }
+
+        .card-gemma.expanded {
+            grid-column: 21 / span 12 !important;
+            grid-row: 6 / span 6 !important;
+        }
+
+        .card-jules.expanded {
+            grid-column: 15 / span 14 !important;
+            grid-row: 6 / span 5 !important;
+        }
+
+        .card-gemini-flash.expanded {
+            grid-column: 1 / span 14 !important;
+            grid-row: 9 / span 6 !important;
+        }
+
+        .card-med-gemma.expanded {
+            grid-column: 9 / span 14 !important;
+            grid-row: 8 / span 6 !important;
+        }
+
+        .card-gemini-diffusion.expanded {
+            grid-column: 16 / span 16 !important;
+            grid-row: 8 / span 6 !important;
+        }
+
+        .card-deep-think.expanded {
+            grid-column: 20 / span 13 !important;
+            grid-row: 9 / span 5 !important;
+        }
+
+        .card-virtual-tryon.expanded {
+            grid-column: 5 / span 16 !important;
+            grid-row: 12 / span 6 !important;
+        }
+
+        .card-synthid.expanded {
+            grid-column: 1 / span 9 !important;
+            grid-row: 12 / span 6 !important;
+        }
+
+        .card-workspace.expanded {
+            grid-column: 16 / span 14 !important;
+            grid-row: 11 / span 5 !important;
+        }
+
+        .card-android-xr.expanded {
+            grid-column: 20 / span 10 !important;
+            grid-row: 11 / span 5 !important;
+        }
+
+        .card-primordial-soup.expanded {
+            grid-column: 22 / span 11 !important;
+            grid-row: 11 / span 5 !important;
+        }
+        .card-android-xr-gemini.expanded {
+            grid-column: 10 / span 14 !important;
+            grid-row: 15 / span 6 !important;
+        }
+        .card-universal-ai.expanded {
+            grid-column: 10 / span 14 !important;
+            grid-row: 13 / span 6 !important;
+        }
+        .card-agents-adk.expanded {
+            grid-column: 20 / span 13 !important;
+            grid-row: 17 / span 6 !important;
+        }
+        .card-gemini-vertex.expanded {
+            grid-column: 19 / span 14 !important;
+            grid-row: 17 / span 6 !important;
+        }
+        .card-vertex-ai-media.expanded {
+            grid-column: 17 / span 14 !important;
+            grid-row: 15 / span 6 !important;
+        }
+        .card-gemini-security.expanded {
+            grid-column: 22 / span 11 !important;
+            grid-row: 13 / span 6 !important;
+        }
+        .card-firebase-io.expanded {
+            grid-column: 1 / span 14 !important;
+            grid-row: 17 / span 6 !important;
+        }
+
+
+        /* 新增卡片：Shop with AI Mode */
+        .card-shop-ai-mode {
+            grid-column: 1 / span 9;
+            grid-row: 13 / span 2;
+        }
+
+        /* 在媒体查询中添加响应式布局 */
+        @media (max-width: 960px) {
+            .card-shop-ai-mode {
+                grid-column: 1 / span 6;
+                grid-row: 24 / span 2;
+            }
+        }
+
+        /* 添加展开时的样式 */
+        .card-shop-ai-mode.expanded {
+            grid-column: 1 / span 14 !important;
+            grid-row: 13 / span 6 !important;
+        }
+
+        /* 新增卡片：Universal AI Assistant */
+        .card-universal-ai {
+            grid-column: 10 / span 8;
+            grid-row: 13 / span 2;
+        }
+
+        /* 在媒体查询中添加响应式布局 */
+        @media (max-width: 960px) {
+            .card-universal-ai {
+                grid-column: 1 / span 6;
+                grid-row: 26 / span 2;
+            }
+        }
+
+        /* 添加展开时的样式 */
+        .card-universal-ai.expanded {
+            grid-column: 10 / span 14 !important;
+            grid-row: 13 / span 6 !important;
+        }
+
+        /* 新增卡片：Gemini gets more personal */
+        .card-gemini-personal {
+            grid-column: 19 / span 9;
+            grid-row: 13 / span 2;
+        }
+
+        /* 在媒体查询中添加响应式布局 */
+        @media (max-width: 960px) {
+            .card-gemini-personal {
+                grid-column: 7 / span 6;
+                grid-row: 26 / span 2;
+            }
+        }
+
+        /* 添加展开时的样式 */
+        .card-gemini-personal.expanded {
+            grid-column: 19 / span 14 !important;
+            grid-row: 13 / span 6 !important;
+        }
+
+        /* 新增卡片：Building with AI */
+        .card-building-with-ai {
+            grid-column: 28 / span 5;
+            grid-row: 15 / span 2;
+        }
+
+        /* 在媒体查询中添加响应式布局 */
+        @media (max-width: 960px) {
+            .card-building-with-ai {
+                grid-column: 7 / span 6;
+                grid-row: 28 / span 2;
+            }
+        }
+
+        /* 添加展开时的样式 */
+        .card-building-with-ai.expanded {
+            grid-column: 20 / span 13 !important;
+            grid-row: 15 / span 6 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Google I/O 2025</h1>
+            <p class="subtitle">探索 Google 最新的 AI 技术与产品</p>
+        </header>
+
+        <div class="mosaic-layout">
+            <!-- Veo 3 -->
+            <div class="card card-veo3" data-img-src="assets/images/5.20v2_Hero_2097x1182.max-600x338.format-webp.webp">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/veo__cover_s0RKXWX.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Veo 3</h2>
+                    <p class="card-title">Google 最先进的视频生成模型</p>
+                </div>
+                <p>支持创建带有音效和对话的视频，现已在美国面向 Google AI Ultra 订阅用户推出</p>
+                
+                <!-- 详细内容区域 -->
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>技术规格</h3>
+                        <p>分辨率：1080p，最长60秒</p>
+                        <p>支持场景：自然风景、人物对话、产品展示</p>
+                        <p>生成速度：30秒视频约需2分钟</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>应用场景</h3>
+                        <p>营销材料制作</p>
+                        <p>社交媒体内容</p>
+                        <p>教育演示视频</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen 4 -->
+            <div class="card card-imagen4" data-img-src="assets/images/IO25_Gemini_MOD_HEADER.max-600x338.format-webp.webp">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/imagen__page_cover.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Imagen 4</h2>
+                    <p>提供更丰富、更详细和更准确的图像生成</p>
+                </div>
+                <p>改进文本渲染和提示结果，现可在 Gemini 应用、Workspace 和 Vertex AI 免费使用</p>
+            </div>
+
+            <!-- Flow -->
+            <div class="card card-flow" data-img-src="assets/images/Flow_Sizzle_Thumbnail_1280_x_72.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Flow</h2>
+                    <p>AI 电影制作工具</p>
+                </div>
+                <p>通过自然语言和资产管理，使用 Veo、Imagen 和 Gemini 创建电影级片段</p>
+            </div>
+
+            <!-- Google AI Ultra -->
+            <div class="card card-ai-ultra" data-img-src="assets/images/Google_AI_Ultra_Blog_Header_Ima.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Google AI Ultra</h2>
+                    <p>$249.99/月（新用户前 3 个月半价）</p>
+                </div>
+                <p>提供最高使用限制，最早获得 Veo 3 和 Gemini 2.5 Pro Deep Think 等高级模型的访问权限</p>
+            </div>
+
+            <!-- Gemini 2.5 -->
+            <div class="card card-gemini25" data-img-src="assets/images/IO25_Gemini_Hero.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Gemini 2.5</h2>
+                    <p>Pro 和 Flash 版本领先于编码和推理基准测试</p>
+                </div>
+                <p>Gemini 2.5 Pro Deep Think 引入增强推理模式，包括用于复杂任务的并行思考技术</p>
+            </div>
+
+            <!-- Google Beam -->
+            <div class="card card-beam">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/Beam_animation_1.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Google Beam</h2>
+                    <p>用 AI 创建更有意义的连接</p>
+                </div>
+                <p>AI 驱动的 3D 视频通信平台，无需特殊眼镜或头显，让远程交流像面对面一样自然</p>
+                <a href="https://blog.google/technology/research/project-starline-google-beam-update/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心技术</h3>
+                        <p>AI 体积视频模型 - 将标准 2D 视频流转换为从任何角度都真实的 3D 体验</p>
+                        <p>光场显示技术 - 创造深度和维度感，支持眼神交流和细微表情识别</p>
+                        <p>企业级可靠性 - 基于 Google Cloud 构建，结合 AI 专业知识提供真实 3D 视频通信</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>交流突破</h3>
+                        <p>实时语音翻译 - 支持自然对话，同时保留声音、语调和表情</p>
+                        <p>沉浸式体验 - 远程交流感觉像在同一个房间，增强理解和信任</p>
+                        <p>无障碍连接 - 跨越距离和语言障碍，实现无缝沟通</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>商业部署</h3>
+                        <p>企业合作伙伴 - 与 Zoom 和 HP 等公司合作，即将推出首批设备</p>
+                        <p>渠道合作 - 与 Diversified 和 AVI-SPL 等合作将 Beam 引入全球企业</p>
+                        <p>早期采用者 - 包括德勤、Salesforce、Citadel 和杜兰戈等全球顶级组织</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemini in Chrome -->
+            <div class="card card-gemini-chrome" data-img-src="assets/images/Gemini_Code_Assist_1.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Chrome 中的 Gemini</h2>
+                </div>
+                <p>为 Google AI Pro 和 Ultra 用户推出，可总结、澄清和帮助理解任何网页</p>
+            </div>
+
+            <!-- Agent Mode -->
+            <div class="card card-agent-mode" data-img-src="assets/images/Blog_Hero_Generic_4.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Agent Mode</h2>
+                </div>
+                <p>即将为 Ultra 桌面用户推出，让 Gemini 处理复杂的在线目标</p>
+            </div>
+
+            <!-- AI Mode in Search -->
+            <div class="card card-astra" data-img-src="assets/images/IO25_SearchSizzle_YT-Thumbnail_.max-600x338.format-webp.webp">
+                <div>
+                    <h2>搜索中的 AI 模式</h2>
+                </div>
+                <p>由 Gemini 2.5 提供支持，提供更高级的推理、更长的查询和多模态搜索</p>
+                <a href="https://blog.google/products/search/google-search-ai-mode-update/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心功能</h3>
+                        <p>Deep Search: 进行数百次并行搜索，提供专家级研究报告</p>
+                        <p>Search Live: 实时通过相机交互式搜索所见内容</p>
+                        <p>智能代理功能: 帮助完成预订门票、餐厅和约会等任务</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>创新特性</h3>
+                        <p>AI购物体验: 查找灵感、筛选产品和虚拟试穿</p>
+                        <p>个人上下文: 基于您的历史搜索和Gmail(可选)提供定制化建议</p>
+                        <p>自定义图表: 为体育和金融数据创建交互式可视化图表</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>上线信息</h3>
+                        <p>已在美国开始推出，新功能将陆续通过Labs向用户开放</p>
+                        <p>由Gemini 2.5支持，为传统搜索体验带来AI智能</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lyria 2 -->
+            <div class="card card-lyria">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/lyria_header.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Lyria 2</h2>
+                    <p>Google的最新音乐生成模型</p>
+                </div>
+                <p>提供高保真音乐和专业级音频，捕捉各种风格和复杂作品的微妙细节</p>
+                <a href="https://deepmind.google/models/lyria/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心能力</h3>
+                        <p>高保真音乐生成 - 能够产生细节丰富的音乐，捕捉不同乐器和演奏风格的细微差别</p>
+                        <p>精细创意控制 - 允许音乐家控制作品中的精细细节，创作符合自己意图和愿景的作品</p>
+                        <p>多样化音乐可能性 - 支持多种音乐风格：古典、爵士、流行、电子等</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>应用场景</h3>
+                        <p>创意灵感源泉 - 提供新的创作起点，帮助音乐家突破创作瓶颈</p>
+                        <p>加速创作过程 - 简化复杂乐段创作，让音乐家更快将想法变为现实</p>
+                        <p>发掘新风格 - 帮助探索不熟悉的音乐类型、技巧和创作可能性</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>技术特点</h3>
+                        <p>生成专业级48kHz立体声音频，可无缝整合到任何项目中</p>
+                        <p>搭载SynthID水印技术，在不影响听感的情况下标记AI生成内容</p>
+                        <p>已有限量内测版本，可通过官网申请加入测试</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemma 3n -->
+            <div class="card card-gemma" data-img-src="assets/images/Gemma3n_Wagtial_RD2-V01.original.jpg">
+                <div>
+                    <h2>Gemma 3n</h2>
+                    <p>移动优先多模态AI模型</p>
+                </div>
+                <p>通过创新架构实现高效能低内存占用，支持音频、图像和文本理解，动态内存仅需2-3GB</p>
+                <a href="https://developers.googleblog.com/en/introducing-gemma-3n/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心技术</h3>
+                        <p>Per-Layer Embeddings (PLE) 技术显著降低RAM使用</p>
+                        <p>5B和8B参数模型实际仅需2GB和3GB动态内存</p>
+                        <p>采用移动设备优化架构，响应速度比Gemma 3 4B快1.5倍</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>创新特性</h3>
+                        <p>Many-in-1架构：单一模型包含多个不同性能层级的子模型</p>
+                        <p>音频理解：支持语音识别和翻译，多模态输入交错处理</p>
+                        <p>强化多语言能力：特别优化日语、德语、韩语、西班牙语和法语</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>使用场景</h3>
+                        <p>离线私密AI体验：无需网络连接的本地处理</p>
+                        <p>实时交互式应用：低延迟响应的移动应用</p>
+                        <p>跨模态理解：结合音频、图像、视频和文本的综合理解</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jules -->
+            <div class="card card-jules">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/Jules_Hero.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Jules</h2>
+                    <p>异步自主编码助手</p>
+                </div>
+                <p>由Gemini 2.5 Pro支持，现已进入公测阶段，可直接连接GitHub自动化完成开发任务</p>
+                <a href="https://blog.google/technology/google-labs/jules/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要功能</h3>
+                        <p>在云端VM中处理完整代码库，无需沙箱环境</p>
+                        <p>支持并行任务执行，同时处理多个请求</p>
+                        <p>提供计划和推理过程的可视化工作流</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>工作方式</h3>
+                        <p>直接集成GitHub工作流，无需切换环境</p>
+                        <p>提供音频格式提交记录，便于快速了解项目历史</p>
+                        <p>用户可在执行前、中、后调整计划，保持对代码的控制</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>应用场景</h3>
+                        <p>编写测试用例和构建新功能</p>
+                        <p>修复bug和更新依赖版本</p>
+                        <p>处理您不想做的编码任务，节省时间</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemini 2.5 Flash Preview -->
+            <div class="card card-gemini-flash" data-img-src="assets/images/new-gemini-2.5-flash-specs.png">
+                <div>
+                    <h2>Gemini 2.5 Flash</h2>
+                    <p>高性价比思考型模型</p>
+                </div>
+                <p>接近Pro版性能但价格更低，每百万token输入$0.15，输出$3.5</p>
+                <a href="https://aistudio.google.com/prompts/new_chat" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>性能特点</h3>
+                        <p>整体性能接近Gemini 2.5 Pro，是高频场景的理想替代</p>
+                        <p>视觉推理和图像理解能力与Pro版相近</p>
+                        <p>多模态支持表现出色，支持文本与图像综合分析</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>价格优势</h3>
+                        <p>输入定价：每百万token仅$0.15</p>
+                        <p>输出定价：每百万token $3.5</p>
+                        <p>比DeepSeek-R1的百万token $2定价仅贵$1.5</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>适用场景</h3>
+                        <p>日常编程与代码辅助</p>
+                        <p>基础图像理解与分析</p>
+                        <p>注意：SimpleQA只有26.9%（Pro为52.9%），知识密集型任务建议使用Pro版</p>
+                        <p>基于现实世界的写作、逻辑推理和复杂内容增强仍推荐使用Pro版</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MedGemma -->
+            <div class="card card-med-gemma" data-img-src="assets/images/med-gemma-spec.png">
+                <div>
+                    <h2>MedGemma</h2>
+                    <p>专业医疗领域模型系列</p>
+                </div>
+                <p>三种变体：4b-pt基座模型，4b-it多模态模型，27b-text-it纯文本模型</p>
+                <a href="https://github.com/google-health/medgemma" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>模型规格</h3>
+                        <p>medgemma-4b-pt：基座模型，8.6GB</p>
+                        <p>medgemma-4b-it：多模态模型，适合医学影像诊断，8.6GB</p>
+                        <p>medgemma-27b-text-it：纯文本输入模型，适合问诊和病历输入，53.97GB</p>
+                        <p>文本上下文长度：输入128K，输出8K</p>
+                        <p>图像处理：多模态模型将图像归一化到896x896分辨率，编码为256个token</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>核心技术</h3>
+                        <p>基于Gemma 3的医学专用变种，针对医疗文本和图像理解优化</p>
+                        <p>采用在多种去识别化医学数据上专门预训练的SigLIP图像编码器</p>
+                        <p>LLM组件在多样化医学数据上训练，包括放射科、病理、眼科、皮肤科图像和医学文本</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>应用场景</h3>
+                        <p>医学影像诊断辅助（X光片、皮肤科图像、眼科图像和病理切片）</p>
+                        <p>医疗文本理解与分析（问诊记录、病历处理）</p>
+                        <p>医学教育和研究辅助工具</p>
+                        <p>模型开源地址：huggingface.co/google/medgemma-27b-text-it</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemini Diffusion -->
+            <div class="card card-gemini-diffusion">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/gemini-diffusion__example-1.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Gemini Diffusion</h2>
+                    <p>超高速文本生成扩散模型</p>
+                </div>
+                <p>生成速度达1479 token/s，性能接近Gemini 2.0 Flash-Lite</p>
+                <a href="https://blog.google/technology/google-deepmind/gemini-diffusion/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>模型特点</h3>
+                        <p>实验性文本扩散模型，通过将随机噪声转换为连贯文本或代码</p>
+                        <p>生成内容速度远超现有最快模型，同时保持编码性能</p>
+                        <p>采用与图像和视频生成领域类似的扩散技术</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>性能优势</h3>
+                        <p>大幅降低生成延迟，提高用户交互体验</p>
+                        <p>适用于需要实时反馈的应用场景</p>
+                        <p>在保持高质量输出的同时实现超高速生成</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>使用体验</h3>
+                        <p>目前提供实验性演示版本，可通过等待列表申请访问</p>
+                        <p>Google正持续优化所有Gemini模型的延迟性能</p>
+                        <p>更快速的2.5 Flash Lite版本即将推出</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Deep Think -->
+            <div class="card card-deep-think" data-img-src="assets/images/deep-think_key-art_Hero.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Deep Think</h2>
+                    <p>Gemini 2.5 Pro的增强推理模式</p>
+                </div>
+                <p>通过并行思考技术解决复杂任务，扩展AI的推理能力</p>
+            </div>
+
+            <!-- 新增卡片：Virtual Try On -->
+            <div class="card card-virtual-tryon">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/Try_On_You_Male.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Google虚拟试穿</h2>
+                    <p>在自己照片上试穿衣物</p>
+                </div>
+                <p>Google新增购物功能，让您用自己的照片虚拟试穿各种服装，轻松选购</p>
+                <a href="https://blog.google/products/shopping/how-to-use-google-shopping-try-it-on/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>使用步骤</h3>
+                        <p>加入试用：前往Search Labs并选择"try on"实验</p>
+                        <p>浏览风格：购物时点击商品列表上的"try it on"图标</p>
+                        <p>上传照片：提供全身照片，建议光线良好且穿着合身衣物</p>
+                        <p>展示效果：保存或分享您的试穿效果，或浏览类似风格</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>技术特点</h3>
+                        <p>AI驱动的虚拟试穿技术</p>
+                        <p>实时渲染多种服装效果</p>
+                        <p>支持各种体型和肤色</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>上线信息</h3>
+                        <p>目前在美国推出测试版</p>
+                        <p>未来将支持更多服装类型和配饰</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：SynthID -->
+            <div class="card card-synthid">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/synthid__product-ui.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>SynthID Detector</h2>
+                    <p>AI内容鉴别门户</p>
+                </div>
+                <p>帮助识别使用Google AI创建的内容，支持图像、音频、视频和文本的水印检测</p>
+                <a href="https://blog.google/technology/ai/google-synthid-ai-content-detector/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要功能</h3>
+                        <p>快速识别AI生成内容中的SynthID水印</p>
+                        <p>标明内容中最可能含有水印的部分</p>
+                        <p>支持图像、音频、视频和文本多种模态</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>技术特点</h3>
+                        <p>高度保留内容质量的鲁棒水印技术</p>
+                        <p>即使内容被分享或经历各种转换仍能检测</p>
+                        <p>已有超过100亿内容被SynthID标记</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>应用场景</h3>
+                        <p>记者和媒体专业人士的内容验证</p>
+                        <p>研究人员的生成内容鉴别</p>
+                        <p>建立更透明可信的生成式AI生态系统</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Workspace with Gemini -->
+            <div class="card card-workspace" data-img-src="assets/images/24763_IO_Blog_Header_Graphic2x-min.max-2600x2600.jpg">
+                <div>
+                    <h2>Workspace with Gemini 全新升级</h2>
+                    <p>助你每天完成最佳工作</p>
+                </div>
+                <p>通过Gmail智能回复、会议翻译与视频创作工具，Gemini为Workspace带来更高效的工作体验</p>
+                <a href="https://workspace.google.com/blog/product-announcements/new-ways-to-do-your-best-work" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>Gmail智能功能</h3>
+                        <p>个性化智能回复：根据上下文和邮件风格自动生成回复</p>
+                        <p>收件箱清理：一键整理和归档邮件</p>
+                        <p>快速预约安排：直接在邮件中共享可预约时间</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>视频与语言突破</h3>
+                        <p>Meet语音翻译：实时翻译对话，保留说话者的声音和表情</p>
+                        <p>Vids视频工具：将幻灯片转换为视频，自动优化音频</p>
+                        <p>AI虚拟形象：无需拍摄即可创建专业视频内容</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>文档增强功能</h3>
+                        <p>源文档引用：Docs中直接链接到相关资料，获得精准AI建议</p>
+                        <p>Imagen 4整合：在所有Workspace应用中创建高质量图像</p>
+                        <p>每月20亿AI辅助：Workspace已为企业用户提供强大AI支持</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Android XR -->
+            <div class="card card-android-xr" data-img-src="assets/images/Blog_Hero_Generic_8.max-600x338.format-webp.webp">
+                <div>
+                    <h2>Android XR</h2>
+                    <p>扩展现实平台</p>
+                </div>
+                <p>将Gemini引入眼镜和头显设备，创造沉浸式AR/VR体验</p>
+            </div>
+
+            <!-- 新增卡片：Primordial Soup -->
+            <div class="card card-primordial-soup" data-img-src="assets/images/FOY_Primoridal_Soup_Deepmind.width-400.format-webp.webp">
+                <div>
+                    <h2>Primordial Soup</h2>
+                    <p>AI电影制作合作伙伴关系</p>
+                </div>
+                <p>Darren Aronofsky的团队与Google DeepMind合作，探索AI在叙事和电影制作中的应用</p>
+                <a href="https://blog.google/technology/google-labs/deepmind-primordial-soup-collaboration/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>合作愿景</h3>
+                        <p>将最先进的视频生成模型交给顶级电影人，推动AI在创意讲故事领域的应用</p>
+                        <p>通过AI技术突破传统电影制作的界限，增强情感化叙事能力</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>项目计划</h3>
+                        <p>正在制作三部短片，每部由新锐导演执导</p>
+                        <p>使用Google DeepMind的生成式AI模型、工具和能力，包括Veo技术</p>
+                        <p>导演将获得Aronofsky的指导，并得到Google DeepMind研究团队支持</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>首部作品</h3>
+                        <p>《ANCESTRA》由获奖导演Eliza McNitt执导</p>
+                        <p>将于2025年6月13日在Tribeca电影节首映</p>
+                        <p>采用混合制作模式，结合实景拍摄与先进AI工具，促进跨学科合作</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Shop with AI Mode -->
+            <div class="card card-shop-ai-mode">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/Copy_of_AI_Mode_Travel_Bag_1.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Shop with AI Mode</h2>
+                    <p>用AI改变您的购物体验</p>
+                </div>
+                <p>使用新的AI购物模式寻找灵感，智能推荐产品，甚至在自己的照片上虚拟试穿服装</p>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要功能</h3>
+                        <p>AI驱动的购物灵感推荐</p>
+                        <p>虚拟试穿技术</p>
+                        <p>智能代理结账体验</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>即将上线</h3>
+                        <p>AI Mode购物体验将在未来几个月内在美国推出</p>
+                        <p>价格跟踪和代理结账功能也将陆续推出</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Universal AI Assistant -->
+            <div class="card card-universal-ai" data-img-src="assets/images/GDM_Hero.width-1200.format-webp.webp">
+                <div>
+                    <h2>Universal AI Assistant</h2>
+                    <p>构建通用AI助手的愿景</p>
+                </div>
+                <p>Google DeepMind正在将Gemini扩展为可以理解和模拟世界各个方面的"世界模型"</p>
+                <a href="https://blog.google/technology/google-deepmind/gemini-universal-ai-assistant" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要目标</h3>
+                        <p>开发能够理解用户所处情境的智能AI</p>
+                        <p>实现规划并代表用户采取行动的功能</p>
+                        <p>跨设备无缝工作的通用AI助手</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>关键技术</h3>
+                        <p>Project Astra的能力整合</p>
+                        <p>Project Mariner的多任务代理系统</p>
+                        <p>世界模型的开发与应用</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Gemini gets more personal -->
+            <div class="card card-gemini-personal">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/143Gemini_10x_Longer_Conversations_v36_SEnfS86.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Gemini更个性化、更主动、更强大</h2>
+                    <p>全新的Gemini应用功能</p>
+                </div>
+                <p>Gemini Live现在支持相机和屏幕共享，深度研究功能支持个人文档，Canvas能力全面提升</p>
+                <a href="https://blog.google/products/gemini/gemini-app-updates-io-2025/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要更新</h3>
+                        <p>Gemini Live现已在Android和iOS上免费提供</p>
+                        <p>Imagen 4和Veo 3视觉生成能力内置</p>
+                        <p>Deep Research支持上传私人PDF和图片</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>个人助理体验</h3>
+                        <p>与Google日历、地图、任务和Keep深度集成</p>
+                        <p>互动式学习测验功能</p>
+                        <p>Chrome浏览器扩展支持</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 在mosaic-layout中添加的新卡片：放在Building with AI卡片和grid-footer之间 -->
+            <!-- 新增卡片：Android XR with Gemini -->
+            <div class="card card-android-xr-gemini">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/16-9_AndroidXR_Headsets_v55136_2_1.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Android XR 与 Gemini</h2>
+                    <p>眼镜和头显设备上的 AI 助手</p>
+                </div>
+                <p>通过Android XR平台，Gemini可以从用户视角理解世界，提供直观、免提的帮助</p>
+                <a href="https://blog.google/products/android/android-xr-gemini-glasses-headsets/" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要功能</h3>
+                        <p>通过相机和麦克风理解用户所见所闻</p>
+                        <p>免手动操作的AI助手体验</p>
+                        <p>实时语言翻译和转录功能</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>设备生态系统</h3>
+                        <p>与三星、高通等合作伙伴共同开发的头显设备</p>
+                        <p>与Gentle Monster、Warby Parker等合作的时尚智能眼镜</p>
+                        <p>为开发者提供软件和参考硬件平台</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>体验创新</h3>
+                        <p>在无限大屏幕上的沉浸式体验</p>
+                        <p>实时信息和导航指引</p>
+                        <p>消息收发和拍照等无需掏出手机的功能</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- 新增卡片：AI Overviews全球扩展 -->
+            <div class="card card-ai-overviews">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/AIOverviews.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>AI Overviews全球扩展</h2>
+                    <p>Google搜索AI功能覆盖更广</p>
+                </div>
+                <p>现已在200多个国家和地区、40多种语言中提供，新增阿拉伯语、中文、马来语等支持</p>
+                <a href="https://blog.google/products/search/ai-overview-expansion-may-2025-update/" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心功能</h3>
+                        <p>使用AI回答复杂问题</p>
+                        <p>快速查找和整合信息</p>
+                        <p>提供相关网站链接，方便用户深入了解</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>用户体验</h3>
+                        <p>业内最快的AI响应速度</p>
+                        <p>用户满意度显著提高</p>
+                        <p>美国和印度等主要市场的使用率提升超过10%</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>技术升级</h3>
+                        <p>美国地区已推出基于Gemini 2.5的定制版本</p>
+                        <p>支持处理更复杂的问题</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Agents ADK & A2A -->
+            <div class="card card-agents-adk"
+                data-img-src="assets/images/GFD_IO25_18_Whats_New_with_Agents_ADK_Agent_Eng.original.png">
+                <div>
+                    <h2>Agents新动态：ADK与A2A</h2>
+                    <p>开发套件与代理协作增强</p>
+                </div>
+                <p>Python ADK稳定版发布，Java ADK首次亮相，A2A协议升级实现更轻量安全的代理协作</p>
+                <a href="https://developers.googleblog.com/en/agents-adk-agent-engine-a2a-enhancements-google-io/"
+                    target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>开发套件升级</h3>
+                        <p>Python ADK v1.0.0: 用于构建生产级代理的稳定版</p>
+                        <p>Java ADK v0.1.0: 将ADK能力扩展到Java生态系统</p>
+                        <p>Agent Engine UI: 简化代理生命周期管理的界面</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>A2A协议提升</h3>
+                        <p>A2A v0.2: 支持无状态交互与标准化认证</p>
+                        <p>Python SDK: 简化A2A协议集成的官方工具</p>
+                        <p>合作伙伴: Auth0、Box、Microsoft等公司已支持A2A协议</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Gemini 2.5 on Vertex AI -->
+            <div class="card card-gemini-vertex" data-img-src="assets/images/expanding_gemini.max-2500x2500.jpg">
+                <div>
+                    <h2>Gemini 2.5 在 Vertex AI 上扩展</h2>
+                    <p>打造更智能、更安全的企业级 AI 应用</p>
+                </div>
+                <p>思维摘要、深度思考模式和增强安全性提供更强大、更透明、更可信的企业AI体验</p>
+                <a href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-gemini-2-5-flash-and-pro-capabilities"
+                    target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>核心功能增强</h3>
+                        <p>思维摘要：整理模型原始思维过程，提供清晰、可审计的AI决策流程</p>
+                        <p>深度思考模式：在回应前同时考虑多个假设，进一步增强数学和编程等复杂任务处理能力</p>
+                        <p>高级安全保障：大幅提升间接提示注入攻击防护，确保企业级AI应用安全可靠</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>企业应用价值</h3>
+                        <p>验证复杂AI任务执行过程，确保与业务逻辑一致</p>
+                        <p>简化调试和审计流程，构建更可信的AI系统</p>
+                        <p>降低企业AI应用的安全风险，支持更广泛业务场景</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>上线信息</h3>
+                        <p>Gemini 2.5 Flash将于六月初在Vertex AI正式发布</p>
+                        <p>Gemini 2.5 Pro将于稍后发布</p>
+                        <p>深度思考模式将向Vertex AI受信任测试用户开放</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Vertex AI生成式媒体模型 -->
+            <div class="card card-vertex-ai-media" data-img-src="assets/images/2_tf1CrD0.max-2000x2000.png">
+                <div>
+                    <h2>Vertex AI生成式媒体模型</h2>
+                    <p>新一代AI媒体创作能力</p>
+                </div>
+                <p>Imagen 4、Veo 3和Lyria 2在Vertex AI上全面升级，提供更高质量的图像、视频和音乐生成能力</p>
+                <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-veo-3-imagen-4-and-lyria-2-on-vertex-ai"
+                    target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>主要升级</h3>
+                        <p>Imagen 4：提供卓越文本渲染与更高整体图像质量</p>
+                        <p>Veo 3：生成带语音与音频的视频，支持复杂提示需求</p>
+                        <p>Lyria 2：高保真音乐生成，精确捕捉各种风格细微差别</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>企业案例</h3>
+                        <p>Klarna：将8周工作缩短至8小时，大幅提升内容制作效率</p>
+                        <p>Envato：使用Veo 2构建VideoGen功能，首周吸引数万用户</p>
+                        <p>Captions：集成Lyria 2实现提示一键生成完整视频配乐</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>安全保障</h3>
+                        <p>SynthID水印：为所有生成内容添加不可见标识</p>
+                        <p>安全过滤：自动筛选输入提示和输出内容</p>
+                        <p>人物生成控制：为视觉输出内容提供额外配置选项</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Gemini Security Safeguards -->
+            <div class="card card-gemini-security" data-img-src="assets/images/gemini-security-sagegurads.webp">
+                <div>
+                    <h2>Gemini安全防护升级</h2>
+                    <p>增强AI模型抵御间接提示注入攻击的能力</p>
+                </div>
+                <p>通过自动红队测试和模型强化技术，使Gemini 2.5成为目前最安全的模型系列</p>
+                <a href="https://deepmind.google/discover/blog/advancing-geminis-security-safeguards/" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>安全挑战</h3>
+                        <p>间接提示注入攻击可能将恶意指令隐藏在模型检索的数据中</p>
+                        <p>随着AI代理功能的增强，安全风险也相应提高</p>
+                        <p>常规防御方法对适应性攻击效果有限</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>防御策略</h3>
+                        <p>自动红队测试(ART)：不断模拟现实攻击场景</p>
+                        <p>模型强化：增强模型识别并忽略注入指令的能力</p>
+                        <p>多层防御：结合模型强化、输入/输出检查和系统级防护</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>实际成效</h3>
+                        <p>显著降低攻击成功率，同时保持模型正常性能</p>
+                        <p>对适应性攻击提供更强韧性</p>
+                        <p>发布详细技术白皮书分享防御经验</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增卡片：Firebase in Google I/O -->
+            <div class="card card-firebase-io" data-img-src="assets/images/firebase-ailogic-intro_1600x800.png">
+                <div>
+                    <h2>Firebase I/O 2025 新动态</h2>
+                    <p>全栈AI应用开发平台</p>
+                </div>
+                <p>Firebase Studio、AI Logic和Model Context Protocol等新功能助力开发者构建AI驱动的应用</p>
+                <a href="https://firebase.blog/posts/2025/05/whats-new-at-google-io" target="_blank">了解更多 →</a>
+            
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>Firebase Studio</h3>
+                        <p>基于云的AI工作空间，已创建超150万个项目</p>
+                        <p>支持从Figma导入设计并通过AI添加功能</p>
+                        <p>自动检测并配置所需的Firebase后端服务</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>Firebase AI Logic</h3>
+                        <p>直接访问Gemini开发者API和Vertex AI模型</p>
+                        <p>混合推理支持，可在Chrome中使用Gemini Nano</p>
+                        <p>Unity与Android XR支持，图像生成能力增强</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>开发提效工具</h3>
+                        <p>Model Context Protocol Server允许AI直接与Firebase交互</p>
+                        <p>App Hosting新增本地部署与Terraform支持</p>
+                        <p>Data Connect支持AI驱动的模式生成与查询优化</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- 新增卡片：Building with AI -->
+            <div class="card card-building-with-ai">
+                <video class="video-bg" autoplay loop muted playsinline>
+                    <source src="assets/images/16-9_DEV_Building_with_Gemini_Agents_Intelligent_experiences_v11.mp4" type="video/mp4">
+                </video>
+                <div>
+                    <h2>Building with AI</h2>
+                    <p>开发者的 Google I/O 亮点</p>
+                </div>
+                <p>全新的开发者工具、API 更新以及 Gemini 2.5 Flash 等模型用于构建 AI 应用</p>
+                <a href="https://blog.google/technology/developers/google-ai-developer-updates-io-2025/" target="_blank">了解更多 →</a>
+                
+                <div class="card-details">
+                    <div class="card-detail-section">
+                        <h3>模型更新</h3>
+                        <p>Gemini 2.5 Flash 和 Pro 预览版</p>
+                        <p>Gemma 3n：多模态开源模型</p>
+                        <p>Gemini Diffusion：超快文本模型</p>
+                        <p>Lyria RealTime：交互式音乐生成模型</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>开发工具</h3>
+                        <p>Agentic Colab：自动执行代码操作</p>
+                        <p>Gemini Code Assist：AI 编码助手</p>
+                        <p>Firebase Studio：云端 AI 工作空间</p>
+                        <p>Jules：异步编码代理</p>
+                        <p>Stitch：生成高质量 UI 和前端代码</p>
+                    </div>
+                    <div class="card-detail-section">
+                        <h3>API 功能</h3>
+                        <p>原生音频输出与对话功能</p>
+                        <p>异步函数调用能力</p>
+                        <p>Computer Use API 与 URL Context 支持</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-footer">
+                <p>Google I/O 2025 - 将研究转化为现实</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有卡片设置背景图片
+            const cards = document.querySelectorAll('.card:not(.card-gemini-diffusion)');
+            
+            cards.forEach(card => {
+                const imgSrc = card.getAttribute('data-img-src');
+                if (imgSrc) {
+                    card.style.backgroundImage = `url(${imgSrc})`;
+                    
+                    // 创建离屏Canvas用于分析图片颜色
+                    detectImageBrightness(imgSrc, (isDark) => {
+                        // 根据图片明暗设置文字颜色
+                        const textColor = isDark ? 'white' : '#202124';
+                        const elements = card.querySelectorAll('h2, p, a');
+                        elements.forEach(el => {
+                            el.style.color = textColor;
+                        });
+                        
+                        // 如果图片较亮，增加遮罩层不透明度
+                        if (!isDark) {
+                            card.style.setProperty('--overlay-opacity', '0.5');
+                        }
+                    });
+                }
+            });
+
+            // 卡片点击展开/收缩功能
+            const allCards = document.querySelectorAll('.card');
+            let expandedCard = null;
+            let originalPositions = {};
+            
+            // 保存所有卡片的原始位置
+            allCards.forEach(card => {
+                const style = window.getComputedStyle(card);
+                const className = Array.from(card.classList).find(cls => cls.startsWith('card-'));
+                if (className) {
+                    originalPositions[className] = {
+                        gridColumnStart: style.gridColumnStart,
+                        gridColumnEnd: style.gridColumnEnd,
+                        gridRowStart: style.gridRowStart,
+                        gridRowEnd: style.gridRowEnd
+                    };
+                }
+            });
+
+            allCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    if (this === expandedCard) {
+                        // 收起当前卡片
+                        this.classList.remove('expanded');
+                        expandedCard = null;
+                        
+                        // 允许动画完成
+                        setTimeout(() => {
+                            document.querySelector('.mosaic-layout').style.height = 'auto';
+                        }, 300);
+                    } 
+                    else {
+                        // 如果已有展开的卡片，先收起
+                        if (expandedCard) {
+                            expandedCard.classList.remove('expanded');
+                        }
+                        
+                        // 展开当前卡片
+                        this.classList.add('expanded');
+                        expandedCard = this;
+                        
+                        // 确保卡片可见
+                        setTimeout(() => {
+                            this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 50);
+                    }
+                });
+            });
+
+            // 点击空白区域关闭展开的卡片
+            document.querySelector('.mosaic-layout').addEventListener('click', function(e) {
+                if (e.target === this && expandedCard) {
+                    expandedCard.classList.remove('expanded');
+                    expandedCard = null;
+                }
+            });
+        });
+
+        /**
+         * 检测图片亮度并确定是否为深色图片
+         * @param {string} imgSrc - 图片路径
+         * @param {function} callback - 回调函数，参数为布尔值表示图片是否为深色
+         */
+        function detectImageBrightness(imgSrc, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous'; // 处理跨域图片
+            
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                
+                ctx.drawImage(img, 0, 0);
+                
+                try {
+                    // 获取图片数据
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    
+                    let totalBrightness = 0;
+                    let totalPixels = 0;
+                    
+                    // 计算图片的平均亮度
+                    for (let i = 0; i < data.length; i += 4) {
+                        // 计算RGB加权亮度: 0.299*R + 0.587*G + 0.114*B
+                        const r = data[i];
+                        const g = data[i + 1];
+                        const b = data[i + 2];
+                        const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+                        
+                        totalBrightness += brightness;
+                        totalPixels++;
+                    }
+                    
+                    const averageBrightness = totalBrightness / totalPixels;
+                    
+                    // 判断图片是否为深色 (亮度小于128为深色)
+                    const isDark = averageBrightness < 128;
+                    
+                    callback(isDark);
+                } catch (e) {
+                    console.error('无法分析图片亮度：', e);
+                    callback(true); // 默认使用白色文字
+                }
+            };
+            
+            img.onerror = function() {
+                // 图片加载失败，默认使用白色文字
+                console.error('无法加载图片：', imgSrc);
+                callback(true);
+            };
+            
+            img.src = imgSrc;
+        }
+    </script>
+</body>
+
+</html>
+
