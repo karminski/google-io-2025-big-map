@@ -99,6 +99,7 @@
             min-height: 180px;
             cursor: pointer;
         }
+        
 
         .card::before {
             content: '';
@@ -1636,7 +1637,7 @@
                     // 创建离屏Canvas用于分析图片颜色
                     detectImageBrightness(imgSrc, (isDark) => {
                         // 根据图片明暗设置文字颜色
-                        const textColor = isDark ? 'white' : '#202124';
+                        const textColor = isDark ? 'white' : 'white'; // 暂时不增加黑色效果, 感觉效果不好
                         const elements = card.querySelectorAll('h2, p, a');
                         elements.forEach(el => {
                             el.style.color = textColor;
