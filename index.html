@@ -51,17 +51,17 @@
             gap: 10px;
             text-align: right;
             font-weight: bold;
-            line-height: 10px;
+            line-height: 14px;
         }
         .header-right p {
             margin: 0;
-            line-height: 10px;
+            line-height: 14px;
 
         }
         .header-right a {
             color: #5f6368;
             text-decoration: none;
-            line-height: 10px;
+            line-height: 14px;
 
         }
 
@@ -524,6 +524,53 @@
                 grid-row: auto !important;
                 min-height: 160px;
             }
+            
+            /* 移动端卡片展开样式 */
+            .mobile-device .card.mobile-expanded {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+                grid-column: 1 !important;
+                grid-row: 1 !important;
+                max-height: 100vh;
+                overflow-y: auto;
+                margin: 0;
+                padding: 20px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            
+            .card-fullscreen {
+                overflow: hidden;
+            }
+            
+            .mobile-device .card.mobile-expanded .card-details {
+                display: block;
+                opacity: 1;
+                max-height: none;
+                overflow: visible;
+            }
+            
+            /* 添加一个关闭按钮 */
+            .mobile-device .card.mobile-expanded::after {
+                content: "×";
+                position: fixed;
+                top: 10px;
+                right: 15px;
+                font-size: 28px;
+                color: white;
+                background: rgba(0,0,0,0.3);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1001;
+            }
 
             .grid-footer {
                 grid-column: 1;
@@ -701,7 +748,7 @@
         <header>
             <h1>Google I/O 2025 Big Map</h1>
             <div class="header-right">
-                <p>Made by: Karminski-牙医 / Link: </p><a href="https://google-io-2025.kcores.com">https://google-io-2025.kcores.com</a>
+                <p>Made by: Karminski-牙医</p> <a href="https://google-io-2025.kcores.com">Link https://google-io-2025.kcores.com</a>
             </div>
         </header>
 
@@ -1626,6 +1673,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // 检测是否为移动设备
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+            
+            // 如果是移动设备，添加移动设备类到body
+            if (isMobile) {
+                document.body.classList.add('mobile-device');
+            }
+            
             // 为所有卡片设置背景图片
             const cards = document.querySelectorAll('.card:not(.card-gemini-diffusion)');
             
@@ -1677,6 +1732,10 @@
                     if (this === expandedCard) {
                         // 收起当前卡片
                         this.classList.remove('expanded');
+                        if (isMobile) {
+                            this.classList.remove('mobile-expanded');
+                            document.body.classList.remove('card-fullscreen');
+                        }
                         expandedCard = null;
                         
                         // 允许动画完成
@@ -1688,10 +1747,17 @@
                         // 如果已有展开的卡片，先收起
                         if (expandedCard) {
                             expandedCard.classList.remove('expanded');
+                            if (isMobile) {
+                                expandedCard.classList.remove('mobile-expanded');
+                            }
                         }
                         
                         // 展开当前卡片
                         this.classList.add('expanded');
+                        if (isMobile) {
+                            this.classList.add('mobile-expanded');
+                            document.body.classList.add('card-fullscreen');
+                        }
                         expandedCard = this;
                         
                         // 确保卡片可见
@@ -1706,6 +1772,10 @@
             document.querySelector('.mosaic-layout').addEventListener('click', function(e) {
                 if (e.target === this && expandedCard) {
                     expandedCard.classList.remove('expanded');
+                    if (isMobile) {
+                        expandedCard.classList.remove('mobile-expanded');
+                        document.body.classList.remove('card-fullscreen');
+                    }
                     expandedCard = null;
                 }
             });
